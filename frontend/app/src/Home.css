@@ -1,0 +1,23 @@
+.background {
+	background: #9395ed;
+	height: 30rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.image {
+	opacity: 0.3;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+}
