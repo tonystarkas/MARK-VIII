@@ -10,14 +10,11 @@ const SubmitFormBox = (props) => {
   const [range, setRange] = useState("");
   const [startPeriod, setStartPeriod] = useState("");
   const [endPeriod, setEndPeriod] = useState("");
-  const [correlationObject, setCorrelationObject] = useState([]);
 
   const submitForm = async () => {
     // const correlationResponse = await correlationBar(instrument);
-    // setCorrelationObject(
-    //   correlationResponse.data.data.finance.result[0].recommendedSymbols
-    // );
-    setCorrelationObject([
+    // console.log(correlationResponse);
+    const correlationResponse = [
       {
         symbol: "NIO",
         score: 0.186695,
@@ -32,14 +29,20 @@ const SubmitFormBox = (props) => {
       },
       {
         symbol: "SNOW",
-        score: 0.137601,
+        score: -0.137601,
       },
       {
         symbol: "COIN",
         score: 0.135044,
       },
-    ]);
-    <CorrelationBox correlationObject={correlationObject} />;
+    ];
+    // props.setFormData({
+    //   correlationObject:
+    //     correlationResponse.data.data.finance.result[0].recommendedSymbols,
+    // });
+    props.setFormData({
+      correlationObject: correlationResponse,
+    });
   };
 
   return (

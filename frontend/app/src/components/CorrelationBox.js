@@ -1,11 +1,16 @@
 const CorrelationBox = (props) => {
-  const test = props.correlationObject;
-  console.log(test);
+  console.log(props.correlationObject);
   return (
-    <div>
-      {test.map((correlation) => (
-        //  box element
-        <div>{correlation.symbol + " : " + correlation.score}</div>
+    <div className="correlationDisplay">
+      {props.correlationObject.map((correlation) => (
+        <div>
+          {correlation.symbol}
+          {correlation.score < 0 ? (
+            <div style={{ color: "red" }}>{correlation.score}</div>
+          ) : (
+            <div style={{ color: "green" }}>{correlation.score}</div>
+          )}
+        </div>
       ))}
     </div>
   );

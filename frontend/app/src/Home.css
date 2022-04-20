@@ -81,3 +81,8 @@
 .mainDataBox {
   background-color: green;
 }
+
+.correlationDisplay {
+  display: flex;
+  justify-content: space-evenly;
+}
