@@ -1,23 +1,83 @@
 .background {
-	background: #9395ed;
-	height: 30rem;
-	position: relative;
-	overflow: hidden;
+  background: #9395ed;
+  height: 30rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .image {
-	opacity: 0.3;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: auto;
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
 }
 
 .center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+.checkBoxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: large;
+}
+
+.stockView {
+  display: flex;
+}
+
+.marketDataCollumn {
+  background-color: red;
+  width: 70%;
+}
+
+.socialMediaCollumn {
+  background-color: purple;
+  width: 30%;
+}
+
+.parameterInputBox {
+  background-color: rgb(167, 214, 145);
+}
+
+.parametersForm {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-content: flex-start;
+}
+
+.parameterRow {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.formLabel {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.formButton {
+  width: 30%;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+}
+
+.correlationBox {
+  background-color: #8ad49d;
+}
+
+.mainDataBox {
+  background-color: green;
 }

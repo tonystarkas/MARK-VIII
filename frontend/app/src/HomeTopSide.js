@@ -1,33 +1,70 @@
-import { Button, Typography } from '@mui/material';
-import SearchBar from './SearchBar';
-import image from './stonker.jpg';
-import './Home.css';
+import {
+  Button,
+  Typography,
+  Checkbox,
+  FormGroup,
+  FormControlLabel,
+} from "@mui/material";
+import { useState } from "react";
+import SearchBar from "./SearchBar";
+import image from "./stonker.jpg";
+import "./Home.css";
 
-const HomeTopSide = () => {
-	return (
-		<div className='background'>
-			<img className='image' src={image} alt=''></img>
-			<Typography
-				style={{ marginLeft: '1rem' }}
-				component={'h3'}
-				variant='h3'
-			>
-				Market Viewer
-			</Typography>
-			<div className='center'>
-				<div style={{ display: 'flex', alignItems: 'center' }}>
-					<SearchBar size={'10rem'} />
-					<Button
-						style={{ marginLeft: '1rem' }}
-						size='large'
-						variant='contained'
-					>
-						Submit
-					</Button>
-				</div>
-			</div>
-		</div>
-	);
+const HomeTopSide = (props) => {
+  const [realtimeChecked, setIsRealtimeChecked] = useState(false);
+  const [historicalChecked, setIsHistoricalChecked] = useState(false);
+
+  const realtimeCheckboxClicked = () => {
+    setIsRealtimeChecked(!realtimeChecked);
+  };
+
+  const historicalCheckboxClicked = () => {
+    setIsHistoricalChecked(!historicalChecked);
+  };
+
+  const submitClicked = () => {
+    props.viewChangeFunction();
+  };
+
+  return (
+    <div className="background">
+      <img className="image" src={image} alt=""></img>
+      <Typography style={{ marginLeft: "1rem" }} component={"h3"} variant="h3">
+        Market Viewer
+      </Typography>
+      <div className="center">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <SearchBar size={"10rem"} />
+          <Button
+            style={{ marginLeft: "1rem" }}
+            size="large"
+            variant="contained"
+            onClick={submitClicked}
+          >
+            Submit
+          </Button>
+        </div>
+        <FormGroup className="checkBoxes">
+          <FormControlLabel
+            control={<Checkbox size="large" />}
+            label="Realtime"
+            checked={realtimeChecked}
+            onChange={realtimeCheckboxClicked}
+          />
+          <FormControlLabel
+            control={<Checkbox size="large" />}
+            label="Historical"
+            checked={historicalChecked}
+            onChange={historicalCheckboxClicked}
+          />
+        </FormGroup>
+        <div className="result">
+          Realtime checkbox is {realtimeChecked ? "checked" : "un-checked"}.
+          Historical checkbox is {historicalChecked ? "checked" : "un-checked"}.
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default HomeTopSide;
