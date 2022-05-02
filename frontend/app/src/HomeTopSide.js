@@ -1,10 +1,4 @@
-import {
-  Button,
-  Typography,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
-} from "@mui/material";
+import { Button, Typography, Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import image from "./stonker.jpg";
@@ -44,7 +38,7 @@ const HomeTopSide = (props) => {
             Submit
           </Button>
         </div>
-        <FormGroup className="checkBoxes">
+        <div className="checkBoxes">
           <FormControlLabel
             control={<Checkbox size="large" />}
             label="Realtime"
@@ -57,10 +51,6 @@ const HomeTopSide = (props) => {
             checked={historicalChecked}
             onChange={historicalCheckboxClicked}
           />
-        </FormGroup>
-        <div className="result">
-          Realtime checkbox is {realtimeChecked ? "checked" : "un-checked"}.
-          Historical checkbox is {historicalChecked ? "checked" : "un-checked"}.
         </div>
       </div>
     </div>

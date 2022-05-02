@@ -8,7 +8,10 @@ const Home = () => {
 
   const changeView = () => {
     setCurrentState(true);
-    console.log("Reached");
+  };
+
+  const goBack = () => {
+    setCurrentState(false);
   };
 
   return (
@@ -21,7 +24,7 @@ const Home = () => {
       )}
       {currentState && (
         <div>
-          <StockView />
+          <StockView backFunction={goBack} />
         </div>
       )}
     </div>
@@ -29,3 +32,4 @@ const Home = () => {
 };
 
 export default Home;
+//stock name by company name

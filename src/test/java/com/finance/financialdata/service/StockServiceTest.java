@@ -28,7 +28,7 @@ class StockServiceTest {
     @Test
     void test() throws IOException, InterruptedException, ParseException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://query1.finance.yahoo.com/v8/finance/chart/NIO?period1=1648188000&period2=1648274400&interval=1h"))
+                .uri(URI.create("https://query1.finance.yahoo.com/v8/finance/chart/NIO?period1=&period2=&interval="))
                 .header("x-api-key", "nRh8GRGQQi9t7ks8jHqKh9TvdI10sQ7T4RRCCkPO")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();

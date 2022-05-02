@@ -1,3 +1,8 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
 .background {
   background: #9395ed;
   height: 30rem;
@@ -12,6 +17,20 @@
   top: 0;
   width: 100%;
   height: auto;
+}
+
+.image2 {
+  opacity: 0.4;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+#outlined-basic {
+  background-color: white;
 }
 
 .center {
@@ -34,17 +53,29 @@
 }
 
 .marketDataCollumn {
-  background-color: red;
   width: 70%;
 }
 
 .socialMediaCollumn {
-  background-color: purple;
+  background-color: #6880ed;
   width: 30%;
 }
 
 .parameterInputBox {
-  background-color: rgb(167, 214, 145);
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.inputParameters {
+  padding-top: 10px;
+}
+
+.backButton {
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  display: flex;
 }
 
 .parametersForm {
@@ -63,6 +94,8 @@
 .formLabel {
   margin-right: 20px;
   font-size: 20px;
+  font-weight: bolder;
+  color: black;
 }
 
 .formButton {
@@ -72,17 +105,85 @@
 .submitButton {
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
 .correlationBox {
-  background-color: #8ad49d;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .mainDataBox {
-  background-color: green;
 }
 
 .correlationDisplay {
   display: flex;
   justify-content: space-evenly;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dataBox {
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.generalDataBox {
+  width: 20%;
+  position: relative;
+}
+
+.historicalBox {
+  width: 80%;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.generalDataDisplay {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.generalDataCell {
+  margin: 10px;
+  padding: 5px;
+  position: relative;
+}
+
+.switch {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.historicalDataBox {
+  display: flex;
+  height: 300px;
+  width: fit-content;
+  overflow-y: auto;
+  text-align: justify;
+  position: relative;
+  margin-left: 10%;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.historicalDataGraph {
+  height: 200px;
+}
+
+.historicalTableCell {
+  border: 1px solid black;
+  padding: 5px;
+  height: 20px;
+}
+
+.historicalTableHeader {
+  border: 1px solid black;
+}
+
+.select {
+  background-color: white;
 }

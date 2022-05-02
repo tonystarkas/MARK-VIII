@@ -1,5 +1,4 @@
 const CorrelationBox = (props) => {
-  console.log(props.correlationObject);
   return (
     <div className="correlationDisplay">
       {props.correlationObject.map((correlation) => (
