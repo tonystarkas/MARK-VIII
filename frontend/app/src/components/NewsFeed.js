@@ -1,5 +1,4 @@
 const NewsFeed = (props) => {
-  console.log(props.newsArticles);
   return (
     <div className="news">
       {props.newsArticles.map((articles) => (

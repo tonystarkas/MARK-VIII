@@ -6,6 +6,10 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import * as React from "react";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDateTimePicker } from "@mui/x-date-pickers/DesktopDateTimePicker";
+import Stack from "@mui/material/Stack";
 
 import {
   correlationBar,
@@ -20,8 +24,14 @@ const SubmitFormBox = (props) => {
   const [instrument, setInstrument] = useState(props.currentInstrument);
   const [interval, setInterval] = React.useState("");
   const [range, setRange] = React.useState("");
-  const [startPeriod, setStartPeriod] = useState("");
-  const [endPeriod, setEndPeriod] = useState("");
+  const [startPeriod, setStartPeriod] = React.useState(
+    new Date("YYYY-MM-DDTHH:MM")
+  );
+  const [endPeriod, setEndPeriod] = React.useState(
+    new Date("YYYY-MM-DDTHH:MM")
+  );
+  // console.log(startPeriod);
+  // console.log(endPeriod);
 
   const submitForm = async () => {
     // const correlationResponse = await correlationBar(instrument);
@@ -129,7 +139,7 @@ const SubmitFormBox = (props) => {
             label="Instrument"
             id="outlined-size-small"
             size="small"
-            value={props.currentInstrument}
+            defaultValue={props.currentInstrument}
             onChange={(e) => setInstrument(e.target.value)}
           />
         </FormControl>
@@ -181,22 +191,43 @@ const SubmitFormBox = (props) => {
           </Select>
         </FormControl>
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <TextField
-            className="select"
-            label="Start Period"
-            id="outlined-size-small"
-            size="small"
-            onChange={(e) => setStartPeriod(e.target.value)}
-          />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <Stack>
+              <DesktopDateTimePicker
+                label="Start Time Period"
+                defaultValue={
+                  new Date().getDate() +
+                  "-" +
+                  (new Date().getMonth() + 1) +
+                  "-" +
+                  new Date().getFullYear()
+                }
+                value={startPeriod}
+                onChange={(newValue) => {
+                  setStartPeriod(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField className="select" size="small" {...params} />
+                )}
+              />
+            </Stack>
+          </LocalizationProvider>
         </FormControl>
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <TextField
-            className="select"
-            label="End Period"
-            id="outlined-size-small"
-            size="small"
-            onChange={(e) => setEndPeriod(e.target.value)}
-          />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <Stack>
+              <DesktopDateTimePicker
+                label="End Time Period"
+                value={endPeriod}
+                onChange={(newValue) => {
+                  setEndPeriod(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField className="select" size="small" {...params} />
+                )}
+              />
+            </Stack>
+          </LocalizationProvider>
         </FormControl>
         <div className="submitButton">
           <Button

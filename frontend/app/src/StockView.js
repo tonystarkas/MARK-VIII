@@ -11,9 +11,11 @@ import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import image from "./stonker.jpg";
 import { Button } from "@mui/material";
+import { CSVLink } from "react-csv";
 
 const StockView = (props) => {
   const [switchState, setSwitchState] = useState(false);
+  const fileHeaders = ["Timestamp", "Open", "High", "Low", "Close", "Volume"];
 
   const [responsesData, setResponsesData] = useState({
     correlationObject: [],
@@ -34,6 +36,15 @@ const StockView = (props) => {
   const backToPrevious = () => {
     props.backFunction();
   };
+
+  const fileData = [
+    responsesData.historicalDataObject[0],
+    responsesData.historicalDataObject[1],
+    responsesData.historicalDataObject[2],
+    responsesData.historicalDataObject[3],
+    responsesData.historicalDataObject[4],
+    responsesData.historicalDataObject[5],
+  ];
 
   return (
     <div className="stockView">
@@ -67,6 +78,17 @@ const StockView = (props) => {
           {responsesData.correlationObject.length > 0 && (
             <div className="historicalBox">
               <div className="switch">
+                <div className="export">
+                  <CSVLink
+                    className="csvLink"
+                    headers={fileHeaders}
+                    data={fileData}
+                    filename="results.csv"
+                    target="_blank"
+                  >
+                    Export to .csv file
+                  </CSVLink>
+                </div>
                 <FormControlLabel
                   control={<Switch />}
                   label="Change view"

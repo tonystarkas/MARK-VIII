@@ -36,12 +36,12 @@ const AdditionalDataBox = (props) => {
           marginTop: "3rem",
           marginLeft: "auto",
           marginRight: "auto",
-          marginBottom: "3rem",
+          marginBottom: "auto",
         }}
       >
-        <Grid container rowSpacing={5} columnSpacing={5}>
+        <Grid container rowSpacing={5} columnSpacing={5} className="gridParent">
           {(aggregatedData || []).map((data) => (
-            <Grid xs={4} item>
+            <Grid xs={4} className="gridElement">
               {data}
             </Grid>
           ))}
