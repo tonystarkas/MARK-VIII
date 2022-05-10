@@ -12,11 +12,12 @@ import {
   generalData,
   historicalData,
   additionalData,
+  newsArticles,
 } from "../api/api.js";
 import Papa from "papaparse";
 
 const SubmitFormBox = (props) => {
-  const [instrument, setInstrument] = useState("");
+  const [instrument, setInstrument] = useState(props.currentInstrument);
   const [interval, setInterval] = React.useState("");
   const [range, setRange] = React.useState("");
   const [startPeriod, setStartPeriod] = useState("");
@@ -104,6 +105,8 @@ const SubmitFormBox = (props) => {
         score: 0.135044,
       },
     ];
+
+    const news = await newsArticles(instrument);
     // props.setFormData({
     //   correlationObject:
     //     correlationResponse.data.data.finance.result[0].recommendedSymbols,
@@ -113,6 +116,7 @@ const SubmitFormBox = (props) => {
       generalDataObject: reformattedGeneralDataResponse.data,
       historicalDataObject: reformattedHistoricalDataResponse,
       additionalDataObject: reformattedAdditionalDataResponse,
+      newsArticles: news.data.data.articles,
     });
   };
 
@@ -125,6 +129,7 @@ const SubmitFormBox = (props) => {
             label="Instrument"
             id="outlined-size-small"
             size="small"
+            value={props.currentInstrument}
             onChange={(e) => setInstrument(e.target.value)}
           />
         </FormControl>

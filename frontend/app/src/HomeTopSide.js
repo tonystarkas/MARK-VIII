@@ -1,12 +1,18 @@
-import { Button, Typography, Checkbox, FormControlLabel } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+} from "@mui/material";
 import { useState } from "react";
-import SearchBar from "./SearchBar";
 import image from "./stonker.jpg";
 import "./Home.css";
 
 const HomeTopSide = (props) => {
   const [realtimeChecked, setIsRealtimeChecked] = useState(false);
   const [historicalChecked, setIsHistoricalChecked] = useState(false);
+  const [instrumentValue, setInstrumentValue] = useState("");
 
   const realtimeCheckboxClicked = () => {
     setIsRealtimeChecked(!realtimeChecked);
@@ -18,6 +24,7 @@ const HomeTopSide = (props) => {
 
   const submitClicked = () => {
     props.viewChangeFunction();
+    props.sendInstrument(instrumentValue);
   };
 
   return (
@@ -28,7 +35,13 @@ const HomeTopSide = (props) => {
       </Typography>
       <div className="center">
         <div style={{ display: "flex", alignItems: "center" }}>
-          <SearchBar size={"10rem"} />
+          <TextField
+            label="Instrument Input"
+            className="select"
+            fullWidth
+            size={"10rem"}
+            onChange={(e) => setInstrumentValue(e.target.value)}
+          />
           <Button
             style={{ marginLeft: "1rem" }}
             size="large"

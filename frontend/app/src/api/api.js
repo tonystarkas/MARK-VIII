@@ -31,6 +31,10 @@ export const historicalData = async (
   startPeriod,
   endPeriod
 ) => {
+  let url = "https://query1.finance.yahoo.com/v8/finance/chart/" + instrument;
+  if (interval) {
+    url = url + "?interval=" + interval;
+  }
   return await resolve(
     axios
       .get(
@@ -51,6 +55,18 @@ export const additionalData = async (instrument) => {
         "https://query1.finance.yahoo.com/v7/finance/quote?symbols=" +
           instrument
       )
+      .catch((error) => {
+        console.log(error);
+      })
+  );
+};
+
+export const newsArticles = async (instrument) => {
+  return await resolve(
+    axios
+      .get("https://newsapi.org/v2/everything?q=" + instrument, {
+        headers: { "X-API-KEY": "" },
+      })
       .catch((error) => {
         console.log(error);
       })

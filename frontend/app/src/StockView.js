@@ -3,6 +3,8 @@ import CorrelationBox from "./components/CorrelationBox";
 import GeneralDataBox from "./components/GeneralDataBox";
 import HistoricalDataBoxTable from "./components/HistoricalDataBoxTable";
 import HistoricalDataBoxGraph from "./components/HistoricalDataBoxGraph";
+import TwitterFeed from "./components/TwitterFeed";
+import NewsFeed from "./components/NewsFeed";
 import AdditionalDataBox from "./components/AdditionalDataBox";
 import { useState } from "react";
 import Switch from "@mui/material/Switch";
@@ -18,6 +20,7 @@ const StockView = (props) => {
     generalDataObject: [],
     historicalDataObject: [],
     additionalDataObject: [],
+    newsArticles: [],
   });
 
   const setFormData = (allResponses) => {
@@ -47,7 +50,10 @@ const StockView = (props) => {
               Back
             </Button>
           </div>
-          <SubmitFormBox setFormData={setFormData} />
+          <SubmitFormBox
+            setFormData={setFormData}
+            currentInstrument={props.currentInstrument}
+          />
         </div>
         <div className="correlationBox">
           <CorrelationBox correlationObject={responsesData.correlationObject} />
@@ -93,7 +99,16 @@ const StockView = (props) => {
           </div>
         )}
       </div>
-      <div className="socialMediaCollumn"></div>
+      {responsesData.additionalDataObject.length !== 0 && (
+        <div className="socialMediaCollumn">
+          <div className="twitterFeed">
+            <TwitterFeed></TwitterFeed>
+          </div>
+          <div className="newsArticles">
+            <NewsFeed newsArticles={responsesData.newsArticles} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

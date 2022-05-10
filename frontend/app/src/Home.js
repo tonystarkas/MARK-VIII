@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const Home = () => {
   const [currentState, setCurrentState] = useState(false);
+  const [currentInstrument, setCurrentInstrument] = useState("");
 
   const changeView = () => {
     setCurrentState(true);
@@ -14,17 +15,27 @@ const Home = () => {
     setCurrentState(false);
   };
 
+  const sendInstrument = (instrumentValue) => {
+    setCurrentInstrument(instrumentValue);
+  };
+
   return (
     <div>
       {!currentState && (
         <div>
-          <HomeTopSide viewChangeFunction={changeView} />
+          <HomeTopSide
+            viewChangeFunction={changeView}
+            sendInstrument={sendInstrument}
+          />
           <HomeBotSide />
         </div>
       )}
       {currentState && (
         <div>
-          <StockView backFunction={goBack} />
+          <StockView
+            backFunction={goBack}
+            currentInstrument={currentInstrument}
+          />
         </div>
       )}
     </div>
