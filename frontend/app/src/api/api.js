@@ -65,7 +65,7 @@ export const newsArticles = async (instrument) => {
   return await resolve(
     axios
       .get("https://newsapi.org/v2/everything?q=" + instrument, {
-        headers: { "X-API-KEY": "" },
+        headers: { "X-API-KEY": "23517558d02148cab13796874f027101" },
       })
       .catch((error) => {
         console.log(error);
