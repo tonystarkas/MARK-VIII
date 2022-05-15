@@ -32,19 +32,40 @@ export const historicalData = async (
   endPeriod
 ) => {
   let url = "https://query1.finance.yahoo.com/v8/finance/chart/" + instrument;
-  if (interval) {
-    url = url + "?interval=" + interval;
+
+  var startPeriodSubstring = startPeriod.toString().substring(3, 24);
+  var endPeriodSubstring = endPeriod.toString().substring(3, 24);
+  var startPeriodParsed = Date.parse(startPeriodSubstring) / 1000;
+  var endPeriodParsed = Date.parse(endPeriodSubstring) / 1000;
+  var temp = 0;
+
+  if (interval || range || startPeriod || endPeriod) {
+    url = url + "?";
   }
+
+  if (interval.lenght > 0) {
+    url = url + "interval=" + interval;
+    temp += 1;
+  }
+
+  // if (range.lenght > 0 && temp === 0) {
+  //   url = url + "range=" + range;
+  // } else {
+  //   url = url + "&range=" + range;
+  // }
+
+  if (startPeriod != null && temp === 0) {
+    url = url + "period1=" + startPeriodParsed + "&period2=" + endPeriodParsed;
+  } else {
+    url = url + "&period1=" + startPeriodParsed + "&period2=" + endPeriodParsed;
+  }
+
+  console.log(url);
+
   return await resolve(
-    axios
-      .get(
-        "https://query1.finance.yahoo.com/v8/finance/chart/" +
-          instrument +
-          "?period1=1650430800&period2=1650517200"
-      )
-      .catch((error) => {
-        console.log(error);
-      })
+    axios.get(url).catch((error) => {
+      console.log(error);
+    })
   );
 };
 
